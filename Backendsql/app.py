@@ -8,7 +8,9 @@ from email.mime.text import MIMEText
 
 app = Flask(__name__)
 CORS(app)
-
+@app.route('/')
+def home():
+    return "Backend is running successfully 🚀"
 # =========================
 # ✅ DB CONNECTION (UPDATED)
 # =========================
