@@ -1,0 +1,230 @@
+:host {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(520px, 1fr) minmax(320px, 390px);
+  align-items: center;
+  gap: 28px;
+  padding: 32px;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(4, 56, 76, 0.58), rgba(6, 136, 153, 0.18) 48%, rgba(255, 121, 151, 0.28)),
+    url("/assets/022.jpg") center / cover fixed;
+  color: #f4feff;
+}
+
+.table-section {
+  min-width: 0;
+  height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 24px;
+  border: 1px solid rgba(220, 255, 255, 0.38);
+  border-radius: 8px;
+  background: rgba(2, 72, 95, 0.42);
+  box-shadow: 0 20px 55px rgba(0, 65, 87, 0.28);
+  backdrop-filter: blur(18px) saturate(135%);
+}
+
+h3,
+h2 {
+  margin: 0 0 18px;
+  color: #f7ffff;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+h3 {
+  flex: 0 0 auto;
+  font-size: 26px;
+}
+
+.table-scroll {
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 28px;
+}
+
+table {
+  width: 100%;
+  overflow: hidden;
+  border-collapse: collapse;
+  border-radius: 8px;
+  background: rgba(236, 255, 255, 0.14);
+}
+
+th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: rgba(0, 114, 139, 0.42);
+  color: #e8ffff;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+th,
+td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid rgba(224, 255, 255, 0.18);
+}
+
+td {
+  color: #fffaf4;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-section {
+  height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+form {
+  max-height: 100%;
+  width: min(100%, 360px);
+  padding: 28px;
+  border: 1px solid rgba(225, 255, 255, 0.42);
+  border-radius: 8px;
+  background: rgba(247, 255, 255, 0.2);
+  box-shadow: 0 18px 50px rgba(0, 65, 87, 0.26);
+  backdrop-filter: blur(18px) saturate(135%);
+}
+
+label {
+  display: block;
+  margin-top: 14px;
+  color: #eaffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 7px;
+  padding: 9px 11px;
+  border: 1px solid rgba(234, 255, 255, 0.5);
+  border-radius: 7px;
+  background: rgba(245, 255, 255, 0.76);
+  color: #073846;
+  font: inherit;
+  outline: none;
+}
+
+td input,
+td select {
+  min-width: 120px;
+  background: rgba(245, 255, 255, 0.66);
+}
+
+input:focus,
+select:focus {
+  border-color: #ff7999;
+  box-shadow: 0 0 0 3px rgba(255, 121, 153, 0.24);
+}
+
+button {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 18px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #ff6f91, #ffad7a);
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgba(0, 82, 105, 0.24);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+}
+
+.error-message {
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 188, 195, 0.62);
+  border-radius: 7px;
+  background: rgba(97, 0, 28, 0.46);
+  color: #fff2f5;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+td button {
+  min-width: 72px;
+  margin-top: 0;
+  background: rgba(255, 111, 145, 0.88);
+}
+
+td .delete-button {
+  background: rgba(6, 82, 105, 0.86);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+@media (max-width: 900px) {
+  html,
+  body {
+    overflow: auto;
+  }
+
+  :host {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .main-container {
+    height: auto;
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+    padding: 18px;
+    overflow: visible;
+    background-position: center;
+  }
+
+  .table-section {
+    height: 58vh;
+    overflow: hidden;
+  }
+
+  .form-section {
+    height: auto;
+    overflow: visible;
+  }
+
+  table {
+    min-width: 720px;
+  }
+}

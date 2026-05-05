@@ -1,0 +1,135 @@
+/* 🌊 BACKGROUND */
+.main-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: url('/assets/022.jpg');
+  background-size: cover;
+  background-position: center;
+
+  position: relative;
+}
+
+/* 🌑 OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* 💎 FORM CARD */
+.form-card {
+  position: relative;
+  width: 360px;
+  padding: 24px;
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+
+  border-radius: 10px;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+/* TITLE */
+h2 {
+  text-align: center;
+  margin-bottom: 16px;
+  color: white;
+}
+
+/* SPACING */
+.form-group {
+  margin-bottom: 12px;
+}
+
+/* LABEL */
+label {
+  display: block;
+  margin-bottom: 4px;
+  color: #ddd;
+  font-size: 14px;
+}
+
+/* 🔥 ALL INPUTS SAME SIZE */
+input,
+select {
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.25);
+
+  background: rgba(255,255,255,0.12);
+  color: white;
+  font-size: 14px;
+
+  box-sizing: border-box;
+}
+
+/* placeholder */
+input::placeholder {
+  color: #ccc;
+}
+
+/* 🔥 DROPDOWN FIX */
+select {
+  appearance: none;
+  background-color: rgba(255,255,255,0.12);
+  color: white;
+}
+
+/* 🔥 THIS FIXES WHITE DROPDOWN */
+select option {
+  background: #1e1e1e;
+  color: white;
+}
+
+/* PASSWORD BOX */
+.password-box {
+  position: relative;
+}
+
+.password-box input {
+  padding-right: 35px;
+}
+
+.password-box i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  cursor: pointer;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+
+  background: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+
+  font-weight: bold;
+}
+
+/* LOGIN TEXT */
+.login-text {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ddd;
+}
+
+.login-text span {
+  color: #00c6ff;
+  cursor: pointer;
+  font-weight: bold;
+}

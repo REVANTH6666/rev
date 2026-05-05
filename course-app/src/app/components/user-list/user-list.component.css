@@ -1,0 +1,115 @@
+/* 🌌 FULL SCREEN BACKGROUND */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;   /* ❌ remove full page scroll */
+}
+
+/* MAIN CONTAINER */
+.main-container {
+  height: 100vh;              /* 🔥 FIX (not min-height) */
+  width: 100vw;               /* 🔥 prevent side scroll */
+  overflow: hidden;           /* 🔥 important */
+  background: url('/assets/022.jpg') no-repeat center center/cover;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* DARK OVERLAY */
+.main-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* CONTENT */
+.content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TITLE */
+h2 {
+  color: #ffffff;
+  margin: 10px 0;
+}
+
+/* TABLE CONTAINER 🔥 */
+.table-container {
+  width: 95%;
+  max-height: 70vh;         /* 🔥 controls scroll area */
+  overflow-y: auto;         /* ✅ ONLY TABLE SCROLL */
+  overflow-x: hidden;       /* ❌ no sideways scroll */
+  border-radius: 10px;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+}
+
+/* HEADER */
+th {
+  position: sticky;         /* 🔥 sticky header */
+  top: 0;
+  background: #007bff;
+  color: white;
+  padding: 12px;
+}
+
+/* CELLS */
+td {
+  padding: 10px;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* INPUTS */
+input {
+  background: transparent;
+  border: 1px solid #ccc;
+  color: white;
+  padding: 5px;
+}
+
+/* BUTTONS */
+button {
+  margin: 3px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.edit-btn {
+  background: #ffc107;
+}
+
+.save-btn {
+  background: #28a745;
+  color: white;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+/* REFRESH ICON */
+.refresh {
+  cursor: pointer;
+  margin-left: 5px;
+}

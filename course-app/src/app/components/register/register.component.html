@@ -1,0 +1,95 @@
+<div class="main-container">
+
+  <!-- Dark overlay -->
+  <div class="overlay"></div>
+
+  <!-- Form -->
+  <div class="form-card">
+    <h2>Register for a Course</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <!-- Name -->
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" formControlName="name" placeholder="Enter your name" />
+        <small *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+          Name is required
+        </small>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="Enter your email" />
+        <small *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']">
+          Email is required
+        </small>
+        <small *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['pattern']">
+          Must end with @gmail.com
+        </small>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label>Password</label>
+        <div class="password-box">
+          <input 
+            [type]="showPassword ? 'text' : 'password'" 
+            formControlName="password"
+            placeholder="Enter password"
+          />
+          <i class="fa-solid"
+             [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+             (click)="togglePassword()"></i>
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <div class="password-box">
+          <input 
+            [type]="showConfirmPassword ? 'text' : 'password'" 
+            formControlName="confirmPassword"
+            placeholder="Confirm password"
+          />
+          <i class="fa-solid"
+             [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
+             (click)="toggleConfirmPassword()"></i>
+        </div>
+      </div>
+
+      <!-- Course -->
+      <div class="form-group">
+        <label>Course</label>
+        <select formControlName="course">
+          <option value="">Select Course</option>
+          <option *ngFor="let c of courses" [value]="c">{{ c }}</option>
+        </select>
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label>Age</label>
+        <input type="number" formControlName="age" placeholder="Enter your age" />
+        <small *ngIf="registerForm.get('age')?.touched && registerForm.get('age')?.invalid">
+          Enter valid age
+        </small>
+      </div>
+
+      <!-- Button -->
+      <button type="submit" [disabled]="isLoading">
+        {{ isLoading ? 'Registering...' : 'Register' }}
+      </button>
+
+      <!-- Login Link -->
+      <p class="login-text">
+        Already have an account?
+        <span (click)="goToLogin()">Login here</span>
+      </p>
+
+    </form>
+  </div>
+
+</div>

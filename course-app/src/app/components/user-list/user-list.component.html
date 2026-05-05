@@ -1,0 +1,119 @@
+<div class="main-container">
+  <div class="content">
+    <div style="display:flex; justify-content: space-between; margin:10px;">
+  <button (click)="goToLogin()">⬅ Back</button>
+
+  <button (click)="logout()" style="background:red; color:white; border:none; padding:6px 12px;">
+    Logout
+  </button>
+</div>
+
+    <h2>User List</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Course</th>
+          <th>Age</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <!-- 🔥 USERS LIST -->
+        <tr *ngFor="let user of users; trackBy: trackById">
+
+          <td>{{ user.id }}</td>
+
+          <!-- NAME -->
+          <td>
+            <input *ngIf="editingId === user.id"
+                   [(ngModel)]="user.name"
+                   [ngModelOptions]="{standalone: true}"
+                   class="input-field">
+
+            <span *ngIf="editingId !== user.id">
+              {{ user.name }}
+            </span>
+          </td>
+
+          <!-- EMAIL -->
+          <td>{{ user.email }}</td>
+
+          <!-- COURSE -->
+          <td>
+            <input *ngIf="editingId === user.id"
+                   [(ngModel)]="user.course"
+                   [ngModelOptions]="{standalone: true}"
+                   class="input-field">
+
+            <span *ngIf="editingId !== user.id">
+              {{ user.course }}
+            </span>
+          </td>
+
+          <!-- AGE -->
+          <td>
+            <input *ngIf="editingId === user.id"
+                   type="number"
+                   [(ngModel)]="user.age"
+                   [ngModelOptions]="{standalone: true}"
+                   class="input-field">
+
+            <span *ngIf="editingId !== user.id">
+              {{ user.age }}
+            </span>
+          </td>
+
+          <!-- ACTIONS -->
+          <td>
+
+            <!-- EDIT -->
+            <button *ngIf="editingId !== user.id"
+                    class="edit-btn"
+                    (click)="enableEdit(user.id)">
+              ✏️ Edit
+            </button>
+
+            <!-- SAVE + CANCEL -->
+            <span *ngIf="editingId === user.id">
+
+              <button class="save-btn"
+                      [disabled]="isSaving"
+                      (click)="update(user)">
+                💾 Save
+              </button>
+
+              <button class="cancel-btn"
+                      (click)="cancelEdit()">
+                ❌ Cancel
+              </button>
+
+            </span>
+
+            <!-- DELETE -->
+            <button class="delete-btn"
+                    (click)="delete(user.id)">
+              🗑 Delete
+            </button>
+
+          </td>
+
+        </tr>
+
+        <!-- 🔥 EMPTY STATE -->
+        <tr *ngIf="users && users.length === 0">
+          <td colspan="6" class="empty-state">
+            🚫 No users found
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>

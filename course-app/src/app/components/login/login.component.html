@@ -1,0 +1,152 @@
+<div class="main-container">
+
+  <!-- LEFT SIDE -->
+  <div class="left-panel">
+    <div class="content-box">
+
+      <h1 class="welcome-title">
+        Welcome to the Student Course Registration Portal 🌱
+      </h1>
+
+      <p class="tagline">
+        Every journey begins with a single step,<br>
+        and every dream begins with a choice.<br><br>
+
+        Here, each course you select is a doorway to new possibilities,<br>
+        each login a quiet promise to your future self.<br><br>
+
+        Learn boldly, grow endlessly, and let knowledge shape your path ahead.<br><br>
+
+        Step in, explore, and start building the future you imagine.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="right-panel">
+
+    <div class="login-card">
+
+      <!-- ========================= -->
+      <!-- 🔐 LOGIN MODE -->
+      <!-- ========================= -->
+      <div *ngIf="!isForgotMode">
+
+        <h2>Login</h2>
+
+        <form [formGroup]="loginForm">
+
+          <label>Email</label>
+          <input type="email" formControlName="email" placeholder="Enter your email">
+
+          <small *ngIf="f['email'].touched && f['email'].errors?.['required']">
+            Email is required
+          </small>
+
+          <small *ngIf="f['email'].touched && f['email'].errors?.['gmail']">
+            Must end with @gmail.com
+          </small>
+
+          <label>Password</label>
+          <div class="password-box">
+            <input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Enter password">
+            <i class="fa-solid"
+               [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+               (click)="togglePassword()">
+            </i>
+          </div>
+
+          <small *ngIf="f['password'].touched && f['password'].errors?.['required']">
+            Password is required
+          </small>
+
+          <button type="button" (click)="onLogin()" [disabled]="isLoading">
+            {{ isLoading ? 'Processing...' : (isOtpSent ? 'Resend OTP 🔁' : 'Send OTP 📩') }}
+          </button>
+
+          <!-- OTP -->
+          <div *ngIf="showOtpBox" class="otp-box">
+
+            <label>Enter OTP</label>
+
+            <input type="text"
+              [(ngModel)]="otp"
+              [ngModelOptions]="{standalone: true}"
+              maxlength="4"
+              placeholder="Enter 4 digit OTP">
+
+            <button type="button" class="verify-btn" (click)="verifyOtp()">
+              Verify OTP ✅
+            </button>
+
+          </div>
+
+          <p class="forgot-text">
+            <span class="forgot-link" (click)="openForgotMode()">
+              Forgot Password?
+            </span>
+          </p>
+
+          <p class="register-text">
+            Don’t have an account?
+            <span (click)="goToRegister()">Register here</span>
+          </p>
+
+        </form>
+      </div>
+
+      <!-- ========================= -->
+      <!-- 🔁 FORGOT PASSWORD MODE -->
+      <!-- ========================= -->
+      <div *ngIf="isForgotMode">
+
+        <h2>Reset Password 🔐</h2>
+
+        <div *ngIf="!forgotOtpSent">
+
+          <p style="font-size: 13px;">Step 1: Enter Email</p>
+
+          <label>Email</label>
+          <input type="email" [(ngModel)]="forgotEmail" placeholder="Enter your email">
+
+          <button (click)="sendForgotOtp()">Send OTP 📩</button>
+
+        </div>
+
+        <div *ngIf="forgotOtpSent && !forgotOtpVerified">
+
+          <p style="font-size: 13px;">Step 2: Verify OTP</p>
+
+          <label>Enter OTP</label>
+          <input type="text" [(ngModel)]="forgotOtp" maxlength="4">
+
+          <button (click)="verifyForgotOtp()">Verify OTP ✅</button>
+
+        </div>
+
+        <div *ngIf="forgotOtpVerified">
+
+          <p style="font-size: 13px;">Step 3: Set New Password</p>
+
+          <label>New Password</label>
+          <input type="password" [(ngModel)]="newPassword">
+
+          <label>Confirm Password</label>
+          <input type="password" [(ngModel)]="confirmPassword">
+
+          <button (click)="resetForgotPassword()">Done ✅</button>
+
+        </div>
+
+        <p class="register-text">
+          <span (click)="backToLoginMode()">← Back to Login</span>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
